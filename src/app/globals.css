@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --banner-height: 50px;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.banner-height {
+  height: var(--banner-height);
+}
+
+.min-height {
+  min-height: calc(100vh - var(--banner-height));
+}
