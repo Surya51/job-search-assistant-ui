@@ -14,7 +14,7 @@ export const assessmentService = {
         return false;
       }
 
-      const response = await apiClient.get(url, {
+      const response = await apiClient.post(url, {}, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
