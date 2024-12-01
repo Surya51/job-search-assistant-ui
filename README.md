@@ -40,6 +40,7 @@ Deployment Stack:
 * Clone the repository.
 * Open UI app folder in VS Code or any IDE of your choice.
 * Open terminal which by default should open the root folder `job-search-assistant` and run `npm install` to install all dependencies.
+* Add a `.env` file to the root folder and add `NEXT_PUBLIC_API_URL = 'http://127.0.0.1:8080'` to the file and save.
 * Run `npm run serve` in the terminal to run the app in local.
 * Open the local url suggested in the terminal, if the port is free it will give you `http://localhost:3000`.
 * You can see the web app running.
@@ -56,8 +57,8 @@ Backend git url: [**Job Search Assistant AI**](https://github.com/Surya51/job-se
 ![image](https://github.com/user-attachments/assets/ce552fb2-46fc-48e2-a94c-e8e0de413995)
 
 ### Nice to haves
-- Feedback is not implemented. This will provide more value.
-- Success toast messages are not implemented. This can be user friendly.
+- User feedback after assessment is not implemented. This will provide more value. Currently, the responses are being saved.
+- Success toast messages are not implemented. This can be user friendly. Most of the errors are being shown. 
 
 ### Author
 
