@@ -11,11 +11,13 @@ const Assessment = ({ assessment_guid }: { assessment_guid: string | string[] | 
   const { redirectToHomePage } = useAuth();
   const [questionAndAnswers, setQuestionAndAnswers] = useState<QuestionAndAnswer[]>([]);
   const [errMsg, setErrMsg] = useState('');
+  const [loading, setLoader] = useState(true);
 
   useEffect(() => {
     const getAssessmentData = async () => {
+      setLoader(true);
       const response = await assessmentService.getAssessmentData(assessment_guid as string, redirectToHomePage);
-
+      setLoader(false);
       if (response.success && response.data) {
         const qnas = response.data.map((q: string) => { return { question: q, answer: '' }; });
         setQuestionAndAnswers(qnas);
@@ -53,15 +55,16 @@ const Assessment = ({ assessment_guid }: { assessment_guid: string | string[] | 
       setErrMsg('*Answer all');
       return;
     }
+    setLoader(true);
     const response = await assessmentService.submitAssessData(assessment_guid as string, questionAndAnswers, isContinue, redirectToHomePage);
-
+    setLoader(false);
     if (response.success && response.data) {
       const qnas = response.data.map((q: string) => { return { question: q, answer: '' }; });
       setQuestionAndAnswers(qnas);
     }
   }
 
-  if (!questionAndAnswers.length) {
+  if (loading) {
     return <Loader />;
   }
 
