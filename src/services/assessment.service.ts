@@ -6,7 +6,7 @@ import { ErrorResponse, QuestionAndAnswer } from "../domain";
 export const assessmentService = {
   async getAssessmentData(assessmentGuid: string, redirectToHomePage: { (): void; }) {
     try {
-      const url = `/assess/generate/${assessmentGuid}`;
+      const url = '/assess/generate';
 
       const token = tokenService.getAuthToken();
       if (!token) {
@@ -14,7 +14,7 @@ export const assessmentService = {
         return false;
       }
 
-      const response = await apiClient.post(url, {}, {
+      const response = await apiClient.post(url, { assessmentGuid }, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
